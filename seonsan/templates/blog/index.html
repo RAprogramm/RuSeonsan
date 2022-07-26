@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block header %}
+<h1>{% block title %}Блог{% endblock %}</h1>
+{% if g.user %}
+<a href="{{ url_for('blog.create') }}" class="btn btn-outline-success addPost">
+  Добавить запись
+</a>
+{% endif %} {% endblock %} {% block content %} {% for post in posts %}
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item postItem">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse{{post['id']}}"
+        aria-expanded="true"
+        aria-controls="collapse"
+      >
+        <h5>
+          <strong>{{ post['title'] }}</strong>
+        </h5>
+      </button>
+    </h2>
+    <div
+      id="collapse{{post['id']}}"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <p>{{ post['body'] }}</p>
+        <p class="postDate">
+          <em>
+            написано
+            <strong>{{ post['created'].strftime('%d.%m.%Y')}}</strong>
+            в <strong>{{ post['created'].strftime('%H:%M')}}</strong>
+          </em>
+        </p>
+        <p class="postAuthor">
+          <em> пользователем <strong>{{post['username'] }}</strong> </em>
+        </p>
+        {% if g.user['id'] == post['author_id'] %}
+        <a href="{{url_for('blog.update', id=post['id'])}}" class="postBody"
+          >Редактировать</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}

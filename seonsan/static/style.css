@@ -1,0 +1,32 @@
+.blockHeader {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.postAuthor {
+  text-align: end;
+}
+.postDate {
+  text-align: end;
+}
+.postBody {
+  position: sticky;
+  left: 100%;
+}
+.postItem {
+  margin: 10px;
+}
+.addPost {
+  margin-left: 3rem;
+  height: min-content;
+}
+.navBrand {
+  font-style: italic;
+}
+.logo {
+  font-size: 42px;
+  background: -webkit-linear-gradient(red 35%, blue 55%, white 75%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

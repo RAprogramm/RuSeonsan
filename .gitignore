@@ -1,0 +1,15 @@
+.RuSeonsanVEnv/
+
+*.pyc
+__pycache__/
+seonsan/__pycache__/
+
+instance/
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/
